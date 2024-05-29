@@ -83,6 +83,8 @@ void hal_lld_init(void) {
 
   void SystemCoreClockUpdate(void);
   SystemCoreClockUpdate();
+
+  irqInit();
 }
 
 /**

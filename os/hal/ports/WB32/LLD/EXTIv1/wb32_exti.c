@@ -142,4 +142,165 @@ void extiClearLine(extiline_t line) {
 
 #endif /* WB32_EXTI_REQUIRED */
 
+OSAL_IRQ_HANDLER(WB32_EXTI0_IRQ_VECTOR) {
+    uint32_t pr;
+
+    OSAL_IRQ_PROLOGUE();
+
+    pr = EXTI->PR & EXTI_PR_PR0;
+
+    if ((pr & EXTI_PR_PR0) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR0);
+    }
+
+    NVIC_DisableIRQ(EXTI0_IRQn);
+
+    EXTI->PR = EXTI_PR_PR0;
+
+    OSAL_IRQ_EPILOGUE();
+}
+
+OSAL_IRQ_HANDLER(WB32_EXTI1_IRQ_VECTOR) {
+    uint32_t pr;
+
+    OSAL_IRQ_PROLOGUE();
+
+    pr = EXTI->PR & EXTI_PR_PR1;
+
+    if ((pr & EXTI_PR_PR1) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR1);
+    }
+
+    NVIC_DisableIRQ(EXTI1_IRQn);
+
+    EXTI->PR = EXTI_PR_PR1;
+
+    OSAL_IRQ_EPILOGUE();
+}
+
+OSAL_IRQ_HANDLER(WB32_EXTI2_IRQ_VECTOR) {
+    uint32_t pr;
+
+    OSAL_IRQ_PROLOGUE();
+
+    pr = EXTI->PR & EXTI_PR_PR2;
+
+    if ((pr & EXTI_PR_PR2) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR2);
+    }
+
+    NVIC_DisableIRQ(EXTI2_IRQn);
+
+    EXTI->PR = EXTI_PR_PR2;
+
+    OSAL_IRQ_EPILOGUE();
+}
+
+OSAL_IRQ_HANDLER(WB32_EXTI3_IRQ_VECTOR) {
+    uint32_t pr;
+
+    OSAL_IRQ_PROLOGUE();
+
+    pr = EXTI->PR & EXTI_PR_PR3;
+
+    if ((pr & EXTI_PR_PR3) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR3);
+    }
+
+    NVIC_DisableIRQ(EXTI3_IRQn);
+
+    EXTI->PR = EXTI_PR_PR3;
+
+    OSAL_IRQ_EPILOGUE();
+}
+
+OSAL_IRQ_HANDLER(WB32_EXTI4_IRQ_VECTOR) {
+    uint32_t pr;
+
+    OSAL_IRQ_PROLOGUE();
+
+    pr = EXTI->PR & EXTI_PR_PR4;
+
+    if ((pr & EXTI_PR_PR4) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR4);
+    }
+
+    NVIC_DisableIRQ(EXTI4_IRQn);
+
+    EXTI->PR = EXTI_PR_PR4;
+
+    OSAL_IRQ_EPILOGUE();
+}
+
+OSAL_IRQ_HANDLER(WB32_EXTI9_5_IRQ_VECTOR) {
+    uint32_t pr;
+
+    OSAL_IRQ_PROLOGUE();
+
+    pr = EXTI->PR & (EXTI_PR_PR5 | EXTI_PR_PR6 | EXTI_PR_PR7 | EXTI_PR_PR8 | EXTI_PR_PR9);
+
+    if ((pr & EXTI_PR_PR5) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR5);
+    }
+
+    if ((pr & EXTI_PR_PR6) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR6);
+    }
+
+    if ((pr & EXTI_PR_PR7) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR7);
+    }
+
+    if ((pr & EXTI_PR_PR8) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR8);
+    }
+
+    if ((pr & EXTI_PR_PR9) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR9);
+    }
+
+    NVIC_DisableIRQ(EXTI9_5_IRQn);
+
+    EXTI->PR = EXTI_PR_PR5 | EXTI_PR_PR6 | EXTI_PR_PR7 | EXTI_PR_PR8 | EXTI_PR_PR9;
+
+    OSAL_IRQ_EPILOGUE();
+}
+
+OSAL_IRQ_HANDLER(WB32_EXTI15_10_IRQ_VECTOR) {
+    uint32_t pr;
+
+    OSAL_IRQ_PROLOGUE();
+
+    pr = EXTI->PR & (EXTI_PR_PR10 | EXTI_PR_PR11 | EXTI_PR_PR12 | EXTI_PR_PR13 | EXTI_PR_PR14 | EXTI_PR_PR15);
+
+    if ((pr & EXTI_PR_PR10) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR10);
+    }
+
+    if ((pr & EXTI_PR_PR11) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR11);
+    }
+
+    if ((pr & EXTI_PR_PR12) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR12);
+    }
+
+    if ((pr & EXTI_PR_PR13) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR13);
+    }
+
+    if ((pr & EXTI_PR_PR14) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR14);
+    }
+
+    if ((pr & EXTI_PR_PR15) != 0) {
+        EXTI->IMR &= ~(EXTI_IMR_MR15);
+    }
+
+    NVIC_DisableIRQ(EXTI15_10_IRQn);
+
+    EXTI->PR = EXTI_PR_PR10 | EXTI_PR_PR11 | EXTI_PR_PR12 | EXTI_PR_PR13 | EXTI_PR_PR14 | EXTI_PR_PR15;
+
+    OSAL_IRQ_EPILOGUE();
+}
 /** @} */
