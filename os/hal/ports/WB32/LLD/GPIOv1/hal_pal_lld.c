@@ -176,6 +176,9 @@ void _pal_lld_enablepadevent(ioportid_t port,
  * @notapi
  */
 void _pal_lld_disablepadevent(ioportid_t port, iopadid_t pad) {
+  /* Enable EXTI clock.*/
+  rccEnableEXTI();
+
   uint32_t padmask, rtsr1, ftsr1;
 
   rtsr1 = EXTI->RTSR;
